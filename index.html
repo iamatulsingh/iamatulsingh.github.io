@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link type="text/css" rel="stylesheet" href="assets/style.css" />
+		<script type="text/javascript" src="assets/script.js"></script>
+		<title>Tic Tac Toe</title>
+	</head>
+	<body>
+		<header>
+			<p>Minimax Algorithm Game</p>
+		</header>
+		<table id="tab-tic-tac-toe" cellspacing="0">
+			<tr><td id="00" onclick="clickedCell(this)"></td><td id="01" onclick="clickedCell(this)"></td><td id="02" onclick="clickedCell(this)"></td></tr>
+			<tr><td id="10" onclick="clickedCell(this)"></td><td id="11" onclick="clickedCell(this)"></td><td id="12" onclick="clickedCell(this)"></td></tr>
+			<tr><td id="20" onclick="clickedCell(this)"></td><td id="21" onclick="clickedCell(this)"></td><td id="22" onclick="clickedCell(this)"></td></tr>
+		</table>
+		<div class="reset-block">
+			<input type="button" value="Let AI Start" id="btn-restart" onclick="restartBtn(this)" class="btn green"/>
+		</div>
+		<div id="toast"><div id="img"></div><div id="desc"></div></div>
+	</body>
+</html>
