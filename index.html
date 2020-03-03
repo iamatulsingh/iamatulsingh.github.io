@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#2196F3">
+    <title>ATKO</title>
+
+    <!-- Favicons -->
+    <link href="favicon.ico" rel="icon">
+
+    <!-- CSS  -->
+    <link href="min/plugin-min.css" type="text/css" rel="stylesheet">
+    <link href="min/custom-min.css" type="text/css" rel="stylesheet">
+	<link href="css/cardmd.css" type="text/css" rel="stylesheet" >
+    
+    <link href="css/icofont/icofont.min.css" rel="stylesheet">
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+	<!-- <script>
+		function myFunction() {
+			var x = document.getElementById("snackbar")
+			x.className = "show";
+			setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2800);
+		}
+	</script> -->
+
+	<script type='text/javascript'>
+		$(document).ready(function(){ 
+			$(window).scroll(function(){ 
+				if ($(this).scrollTop() >= 2000) { 
+					$('.scroll').fadeIn(300); 
+				} else { 
+					$('.scroll').fadeOut(300); 
+				} 
+			}); 
+			$('#scroll').click(function(){ 
+				$("html, body").animate({ scrollTop: 0 }, 1300); 
+				return false; 
+			});
+			$("#ser").click(function() {
+				$('html, body').animate({
+					scrollTop: $("#intro").offset().top
+				}, 1400);
+			});
+			$("#wor").click(function() {
+				$('html, body').animate({
+					scrollTop: $("#work").offset().top
+				}, 1400);
+			});
+			$("#tea").click(function() {
+				$('html, body').animate({
+					scrollTop: $("#team").offset().top
+				}, 1400);
+			});
+			$("#con").click(function() {
+				$('html, body').animate({
+					scrollTop: $("#contact").offset().top
+				}, 1400);
+			});
+		});
+	</script>
+
+	<style type="text/css">
+		/* BackToTop button css */
+		#scroll {
+			position:fixed;
+			right:10px;
+			bottom:10px;
+			cursor:pointer;
+			width:50px;
+			height:50px;
+			background-color:#0af68a;
+			text-indent:-9999px;
+			display:none;
+			-webkit-border-radius:60px;
+			-moz-border-radius:60px;
+			border-radius:60px
+		}
+		#scroll span {
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin-left:-8px;
+			margin-top:-12px;
+			height:0;
+			width:0;
+			border:8px solid transparent;
+			border-bottom-color:#ffffff
+		}
+		#scroll:hover {
+			background-color:#e74c3c;
+			opacity:1;filter:"alpha(opacity=100)";
+			-ms-filter:"alpha(opacity=100)";
+		}
+		
+		/*Tool Tip style */
+			.tooltip {
+				position: relative;
+				display: inline-block;
+			/*	border-bottom: 1px dotted black;   */
+			}
+
+			.tooltip .tooltiptext {
+				visibility: hidden;
+				width: 120px;
+				background-color: black;
+				color: #fff;
+				text-align: center;
+				border-radius: 6px;
+				padding: 5px 0;
+				position: absolute;
+				z-index: 1;
+				bottom: 150%;
+				left: 50%;
+				margin-left: -60px;
+			}
+
+			.tooltip .tooltiptext::after {
+				content: "";
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				margin-left: -5px;
+				border-width: 5px;
+				border-style: solid;
+				border-color: black transparent transparent transparent;
+			}
+
+			.tooltip:hover .tooltiptext {
+				visibility: visible;
+			}
+			
+				#snackbar {
+				visibility: hidden;
+				min-width: 250px;
+				margin-left: -125px;
+				background-color: #333;
+				color: #fff;
+				text-align: center;
+				border-radius: 2px;
+				padding: 16px;
+				position: fixed;
+				z-index: 1;
+				left: 50%;
+				bottom: 30px;
+				font-size: 17px;
+			}
+
+			#snackbar.show {
+				visibility: visible;
+				-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+				animation: fadein 0.5s, fadeout 0.5s 2.5s;
+			}
+
+			@-webkit-keyframes fadein {
+				from {bottom: 0; opacity: 0;}
+				to {bottom: 30px; opacity: 1;}
+			}
+
+			@keyframes fadein {
+				from {bottom: 0; opacity: 0;}
+				to {bottom: 30px; opacity: 1;}
+			}
+
+			@-webkit-keyframes fadeout {
+				from {bottom: 30px; opacity: 1;}
+				to {bottom: 0; opacity: 0;}
+			}
+
+			@keyframes fadeout {
+				from {bottom: 30px; opacity: 1;}
+				to {bottom: 0; opacity: 0;}
+			}
+	</style>
+
+</head>
+<body id="top" class="scrollspy">
+
+<!-- Pre Loader -->
+<div id="loader-wrapper">
+    <div id="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+</div>
+
+<!--Navigation-->
+ <div class="navbar-fixed">
+    <nav id="nav_f" class="default_color" role="navigation">
+        <div class="container">
+            <div class="nav-wrapper">
+            <a href="javascript:void(0);" id="logo-container" class="brand-logo"><img src="img/logo.png" alt="logo" width="100px" height="60px"></a>
+                <ul class="right hide-on-med-and-down">
+                    <!-- <li><a href="#intro" id="ser" onclick="myFunction()">Service</a></li>
+                    <li><a href="#work" id="wor" onclick="myFunction()">Work</a></li>
+                    <li><a href="#team" id="tea" onclick="myFunction()">Team</a></li>
+                    <li><a href="#contact" id="con" onclick="myFunction()">Contact</a></li> -->
+                    <li><a href="#intro" id="ser">Service</a></li>
+                    <li><a href="#work" id="wor">Work</a></li>
+                    <!-- <li><a href="#team" id="tea">Team</a></li> -->
+                    <li><a href="#contact" id="con">Contact</a></li>
+                    <!-- <li><a href="#about" target="_blank">About Me</a></li> -->
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="#intro" id="ser">Service</a></li>
+                    <li><a href="#work" id="wor">Work</a></li>
+                    <li><a href="#team" id="tea">Team</a></li>
+                    <li><a href="#contact" id="con">Contact</a></li>
+                    <!-- <li><a href="#about" target="_blank">About Me</a></li> -->
+                </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!--Hero-->
+<div class="section no-pad-bot" id="index-banner" style="z-index: -222 !important;">
+    <div class="container">
+        <h1 class="text_h center header cd-headline letters type">
+            <span>We Love</span> 
+            <span class="cd-words-wrapper waiting">
+                <b class="is-visible">coding</b>
+                <b>AI/ML</b>
+                <b>developing</b>
+            </span>
+        </h1>
+    </div>
+</div>
+
+<!--Intro and service-->
+<div class="section scrollspy">
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container">
+  
+          <div class="section-title" id="intro">
+            <h2>Services</h2>
+          </div>
+  
+          <div class="row">
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+              <!-- <div class="icon"><i class="icofont-computer"></i></div> -->
+              <h4 class="title"><a href="">Web Scraping</a></h4>
+              <p class="description">When it comes to finding relevant business data, websites prove to be rich sources. But, extracting and collecting relevant data from websites is an intricate process that calls for trained resources and access to the latest tools. We have a group of well experienced people who can scrape data for you.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+              <!-- <div class="icon"><i class="icofont-chart-bar-graph"></i></div> -->
+              <h4 class="title"><a href="">Cloud service.</a></h4>
+              <p class="description">Over 80% of data migration efforts face hiccups and several cloud migrations fail due to improper planning, implementation, and budgeting. With cloud experts from our team you can overcome these issues.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+              <!-- <div class="icon"><i class="icofont-earth"></i></div> -->
+              <h4 class="title"><a href="">Chat Bots</a></h4>
+              <p class="description">Chat bots reduce the human effort. Why choose us? will Train your bots based on your organisation culture using our machine learning models.</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+              <!-- <div class="icon"><i class="icofont-image"></i></div> -->
+              <h4 class="title"><a href="">Image pre-processing</a></h4>
+              <p class="description">Any project that contains image processing has the most important part of image preprocessing, we can give you code which you can plug-in to your code for best best result.</p>
+              <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                <!-- <div class="icon"><i class="icofont-image"></i></div> -->
+                <h4 class="title"><a href="">New challenge</a></h4>
+                <p class="description">We are group of crazy who loves new challenge. If you have any new challenge which is not mentioned above, give us a try.</p>
+            </div>
+          </div>
+        </div>
+      </section><!-- End Services Section -->
+</div>
+
+<!--Work-->
+
+
+<div class="section scrollspy" >
+    <div class="container" id="work">
+        <h2 class="header text_b">Work </h2>
+        <div class="row">
+
+            <div class="col s12 m4 l3">
+                <div class="card cardMD">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="img/data_scraper.gif">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Data Scrapping <i class="mdi-navigation-more-vert right"></i></span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Data Scrapping <i class="mdi-navigation-close right"></i></span>
+                        <p>As shown in video the project was made to extraxt data from instagram.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col s12 m4 l3">
+                <div class="card cardMD">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="img/text_recognition.gif">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Text Recognition <i class="mdi-navigation-more-vert right"></i></span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Text Recognition <i class="mdi-navigation-close right"></i></span>
+                        <p>Algorithm writen for text recognition and detection.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col s12 m4 l3">
+                <div class="card cardMD">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="img/FB_CHAT_BOT.gif">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Facebook chatbot<i class="mdi-navigation-more-vert right"></i></span>
+
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Facebook chatbot <i class="mdi-navigation-close right"></i></span>
+                        <p>A machine learning model was created using tensorflow seq2seq algo to chat with user.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            
+            <div class="col s12 m4 l3">
+                <div class="card cardMD">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="img/object_detections.gif">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Object Detection <i class="mdi-navigation-more-vert right"></i></span>  
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Object Detection  <i class="mdi-navigation-close right"></i></span>
+                        <p>As shown in video Object detection algorithm is written using machine learning.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m4 l3">
+                <div class="card cardMD">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="img/Object_Detection_Whatsapp_Telegram.gif">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Whatsapp api <i class="mdi-navigation-more-vert right"></i></span>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Object Detection and Whatsapp api <i class="mdi-navigation-close right"></i></span>
+                        <p>In this project object detection is done using machine learning and part of video is cropped and sent to whats app, using whats app api.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col s12 m4 l3">
+                <div class="card cardMD">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src="img/Telegram_Bot.gif">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Telegram bot<i class="mdi-navigation-more-vert right"></i></span>
+                        
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Telegram bot<i class="mdi-navigation-close right"></i></span>
+                        <p>A machine learning model was created using tensorflow seq2seq algo to chat with user.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Parallax-->
+<div class="parallax-container">
+    <div class="parallax"><img src="img/parallax1.png"></div>
+</div>
+
+<!--Team-->
+<!-- <div class="section scrollspy">
+    <div class="container" id="team">
+        <h2 class="header text_b"> Our Team </h2>
+        <div class="row">
+            <div class="col s12 m3">
+                <div class="card card-avatar cardMD">
+                    <div class="waves-effect waves-block waves-light">
+                        <img class="activator" src="img/avatar1.png">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Avatar 1<br/>
+                            <small><em><a class="red-text text-darken-1" href="#">CEO</a></em></small></span>
+                        <p>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-google-plus-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-linkedin-square"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m3">
+                <div class="card card-avatar cardMD">
+                    <div class="waves-effect waves-block waves-light">
+                        <img class="activator" src="img/avatar2.png">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Avatar 2<br/>
+                            <small><em><a class="red-text text-darken-1" href="#">Designer</a></em></small>
+                        </span>
+                        <p>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-google-plus-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-linkedin-square"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m3">
+                <div class="card card-avatar cardMD">
+                    <div class="waves-effect waves-block waves-light">
+                        <img class="activator" src="img/avatar3.png">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">
+                            Capt. America <br/>
+                            <small><em><a class="red-text text-darken-1" href="#">CMO</a></em></small></span>
+                        <p>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-google-plus-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-linkedin-square"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m3">
+                <div class="card card-avatar cardMD">
+                    <div class="waves-effect waves-block waves-light">
+                        <img class="activator" src="img/avatar4.png">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Robin<br/>
+                            <small><em><a class="red-text text-darken-1" href="#">Developer</a></em></small></span> -->
+                        <!-- <p>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-facebook-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-twitter-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-google-plus-square"></i>
+                            </a>
+                            <a class="blue-text text-lighten-2" href="#">
+                                <i class="fa fa-linkedin-square"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!--Footer-->
+<footer id="contact" class="page-footer default_color scrollspy">
+    <div class="container">  
+        <div class="row">
+            <div class="col l6 s12">
+                <form class="col s12" method="post">
+                    <div class="row">
+                        <h3>ATKO</h3>
+                        <p>
+                          <strong>Phone:</strong> +91 7042289313<br>
+                          <strong>Email:</strong> atulsingh0401@gmail.com<br>
+                        </p>
+                        <!-- <div class="input-field col s6">
+                            <i class="mdi-action-account-circle prefix white-text"></i>
+                            <input id="name" name="name" type="text" class="validate white-text">
+                            <label for="name" class="white-text">First Name</label>
+                        </div> -->
+                        <!-- <div class="input-field col s6">
+                            <i class="mdi-communication-email prefix white-text"></i>
+                            <input id="email" name="email" type="email" class="validate white-text">
+                            <label for="email" class="white-text">Email-id</label>
+                        </div> -->
+                        <!-- <div class="input-field col s12">
+                            <i class="mdi-editor-mode-edit prefix white-text"></i>
+                            <textarea id="msg" name="message" class="materialize-textarea white-text"></textarea>
+                            <label for="msg" class="white-text">Message</label>
+                        </div> -->
+                        <!-- <div class="col offset-s7 s5">
+                            <button class="btn waves-effect waves-light red darken-1" onclick="sendEmail()">Submit
+                                <i class="mdi-content-send right white-text"></i>
+                            </button>
+                        </div> -->
+                    </div>
+                </form>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text"></h5>
+                <ul>
+                    <li><a class="white-text" href="#"></a></li>
+                    <li><a class="white-text" href="#"></a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Social</h5>
+                <ul>
+                    <!-- <li>
+                        <a class="tooltip white-text" href="#">
+                            <i class="small fa fa-behance-square white-text"></i> Behance <span class="tooltiptext"> Behance </span>
+                        </a>
+                    </li> -->
+                    <!-- <li>
+                        <a class="tooltip white-text" href="#">
+                            <i class="small fa fa-facebook-square white-text"></i> Facebook <span class="tooltiptext"> Facebook </span>
+                        </a>
+                    </li> -->
+                    <li>
+                        <a class="tooltip white-text" href="https://github.com/iamatulsingh">
+                            <i class="small fa fa-github-square white-text"></i> Github <span class="tooltiptext"> Github </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip white-text" href="https://linkedin.com/in/iamatulsingh">
+                            <i class="small fa fa-linkedin-square white-text"></i> Linkedin <span class="tooltiptext"> Linkedin </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="tooltip white-text" href="https://twitter.com/devAtulSingh">
+                            <i class="small fa fa-twitter-square white-text"></i> Twitter <span class="tooltiptext"> Linkedin </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright default_color">
+        <div class="container">
+            <center> Developed by <a class="white-text" href="javascript:void(0);">AtKo &copy; <script>document.write(new Date().getFullYear());</script></a> </center>
+        </div>
+    </div>
+	<!-- <div id="snackbar">Wooo!! Moving</div> -->
+</footer>
+
+<!-- <!-- <a href="javascript:void(0);" id="scroll" title="Scroll to Top" class="scroll tooltip waves-effect waves-light" style="display: none;"><span></span></a> -->
+
+    <!--  Scripts-->
+    <script src="min/plugin-min.js"></script>
+    <script src="min/custom-min.js"></script>
+
+    </body>
+	
+	 <script src="min/plugin-min.js"></script>
+     <script src="min/custom-min.js"></script>
+     
+     <!-- <script>
+         function sendEmail() {
+            Email.send({
+                SecureToken : "C973D7AD-F097-4B95-91F4-40ABC5567812",
+                To : 'atulsingh0401@gmail.com',
+                From : document.getElementById("email").value,
+                Subject : "AtKo Official",
+                Body : document.getElementById("name").value + ": " + document.getElementById("msg").value
+            }).then(
+                message => alert(message)
+            );
+        } -->
+     <!-- </script> --> -->
+</html>
