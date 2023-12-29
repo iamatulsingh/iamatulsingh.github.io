@@ -5,22 +5,19 @@ categories: [eksclustergames, ctf, image-inquisition]
 tags: [ctf, eksclustergames, image-inquisition]
 ---
 
->A pod's image holds more than just code. Dive deep into its ECR repository. Inspect the image layers, and uncover the hidden secret
-{: .prompt-info }
+>A pod's image holds more than just code. Dive deep into its ECR repository. Inspect the image layers, and uncover the hidden secret. You can also check the required K8s Cheat Sheet for this challenge within this page.
+{: .prompt-info } 
 
-In this challenge, you retrieved credentials from the Instance Metadata Service (IMDS). Moving forward, these credentials will be readily available in the pod for your ease of use. You can also check the required K8s Cheat Sheet for this challenge within this page. 
-
-If you see permissions, it's clearly mentioned that we have `list, get` pods permission.So, let's start with the listing the pods.
+If you check permissions, it's listed that we have `list and get pods` permissions. So, let's start with listing the pods.
 
 >You can also check the permission using `kubectl` command as mentioned below.
-{: .prompt-tip }
-
 ```bash
 root@wiz-eks-challenge:~# kubectl auth can-i list pod
 yes
 root@wiz-eks-challenge:~# kubectl auth can-i get pod
 yes
 ```
+{: .prompt-tip }
 
 ### List pods
 
@@ -30,7 +27,7 @@ NAME                      READY   STATUS    RESTARTS      AGE
 accounting-pod-876647f8   1/1     Running   1 (22d ago)   58d
 ```
 
-As it's only one pod to focus, we can simply start with it by checking it's image.
+As it's only one pod to focus, we can simply start with checking it's image (hint in the challenge description).
 
 ### Contianer Image
 
