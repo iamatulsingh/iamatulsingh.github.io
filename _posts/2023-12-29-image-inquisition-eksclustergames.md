@@ -10,7 +10,7 @@ tags: [ctf, eksclustergames, image-inquisition]
 
 In this challenge, you retrieved credentials from the Instance Metadata Service (IMDS). Moving forward, these credentials will be readily available in the pod for your ease of use. You can also check the required K8s Cheat Sheet for this challenge within this page. 
 
-If you see permissions, it's clearly mentioned that we have `list,get` pods permission.So, let's start with the listing the pods.
+If you see permissions, it's clearly mentioned that we have `list, get` pods permission.So, let's start with the listing the pods.
 
 >You can also check the permission using `kubectl` command as mentioned below.
 {: .prompt-tip }
