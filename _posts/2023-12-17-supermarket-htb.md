@@ -13,9 +13,9 @@ There are multiple ways to solve this challenge, like:
 
 - [ ] Read the encrypted strings from `jni` and write a script in any chosen language to decrypt it.
 - [ ] Hook the function and read the value from it which will require a rooted android phone/emulator.
-- [x] Use some own custom tool and save some precious time `(Which I did by the way)`.
+- [x] Use self written custom tool and save some precious time `(Which I did by the way)`.
 
-If you see the code after decompiling, you can see that it's reading strings from a `jni` library name `supermarket` which is present in `lib` folder.
+If you check the code after decompilation, you can see that it's reading strings from a `jni` library name `supermarket` which is present in `lib` folder.
 
 ```java
 static {
@@ -23,9 +23,9 @@ static {
     }
 ```
 
-I already have some of my self written tool specially for reverse engineering so I didn't even bother to check that `supermarket.so` and wrote a script to get the string and decrypt it. I simply used my tool to inject in the app and got the decrypted string. Please check the original and patched code I mentioned below. I'm not pasting my code to receive that string on Telegram. Below is the java similar code snippet from the decompiled apk.
+I already have my self written tool specially for reverse engineering so I didn't even bother to check that `supermarket.so` and spending time to write a script to get the string and decrypt it. I simply used my tool to inject in the app and got the decrypted string. Please check the original and patched code I mentioned below. I'm not pasting my code to receive that string on Telegram. Below is the java similar code snippet from the decompiled apk.
 
-I needed to focus here just to read the `new String(cipher.doFinal(Base64.decode(stringFromJNI, 0)), "utf-8")` instead of going to the `jni` file and the decrypt the encrypted string and writing code for doing tha. This is because I have a smali code using which I can send this string to that and I'll receive from that.
+I needed to focus on reading the value of `new String(cipher.doFinal(Base64.decode(stringFromJNI, 0)), "utf-8")` because I have a smali code using which I can read this decrypted string and send it to my `Telegram` chat. I Just needed to import that and send that to imported function as function parameter. 
 
 
 ```java
@@ -117,8 +117,6 @@ invoke-virtual {v5, v3, p3}, Lcom/example/supermarket/SendTelegram;->sendMessage
 
 Last but not least, don't forget to add internet permisison to the manifest.
 
-Now I just simply type anything in the coupon box and I got the result message in my telegram. 
-
 ```xml
 <?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="31" android:compileSdkVersionCodename="12" package="com.example.supermarket" platformBuildVersionCode="31" platformBuildVersionName="12">
     <!-- Add this -->
@@ -138,6 +136,8 @@ Now I just simply type anything in the coupon box and I got the result message i
     </application>
 </manifest>
 ```
+
+Finally, I just had to click/touch the coupon code box and I got the result as message in my Telegram chat.
 
 
 | ![space-1.jpg](/assets/screenshots/sidebar.png){: width="350" } | ![space-1.jpg](/assets/screenshots/result.jpg){: width="320" } | 
