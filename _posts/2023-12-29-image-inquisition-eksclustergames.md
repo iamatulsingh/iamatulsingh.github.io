@@ -36,7 +36,7 @@ root@wiz-eks-challenge:~# kubectl get pods -o=jsonpath='{range .items[*]}{range 
 688655246681.dkr.ecr.us-west-1.amazonaws.com/central_repo-aaf4a7c@sha256:7486d05d33ecb1c6e1c796d59f63a336cfa8f54a3cbc5abf162f533508dd8b01
 ```
 
-It's clear that the image is in ECR so obvisuly we need to run the AWS commands to go ahead.
+It's clear that the image is in ECR so obviously we need to run some AWS commands to go ahead.
 
 
 ```bash
@@ -45,7 +45,7 @@ root@wiz-eks-challenge:~# aws sts get-caller-identity
 Unable to locate credentials. You can configure credentials by running "aws configure".
 ```
 
-Now that above command returned output for login, we need to use the AWS Instance metadata service (IMDS) to get through it. Let's perform the required steps to setup login and get the Docker image from ECR.
+As the above command asked to login, we need to use the AWS Instance metadata service (IMDS) to get through it. Let's perform some required steps to login and get the Docker image from ECR.
 
 ### Instance Metadata Service (IMDS) to get IAM instance credentials
 
@@ -97,7 +97,7 @@ crane pull "$(kubectl get pods -o=jsonpath='{range .items[*]}{range .spec.contai
 ```
 {: .prompt-tip }
 
-It was mentioned in this Challenge that we need to check the image layers for getting flag. For this, I chose `Crane` as it was mentioned that this tool is already installed else `dive` is also a nice tool for this.
+Initially it was mentioned in this Challenge that, we need to check the image layers for getting the flag. For that, I chose `Crane` as it was mentioned that this tool is already installed else `dive` is also a nice choise for this.
 
 ### Check the config of the image
 
