@@ -92,7 +92,7 @@ root@wiz-eks-challenge:~# aws ecr get-login-password | crane auth login --userna
 2023/12/29 20:11:42 logged in via /home/user/.docker/config.json
 ```
 
->Pull image from ECR using Crane (pre installed) else you can use `dive` also. 
+>Pull image from ECR using `Crane` (pre installed) else you can use `dive` also. 
 ```bash
 crane pull "$(kubectl get pods -o=jsonpath='{range .items[*]}{range .spec.containers[*]}{.image}{"\n"}{end}{end}')" /tmp/image.tar
 ```
