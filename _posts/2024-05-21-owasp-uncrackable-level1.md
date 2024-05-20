@@ -44,7 +44,7 @@ To understand why, we can decompile the APK using jadx. In the `AndroidManifest.
 
 In `MainActivity`, we find the code responsible for detecting root and closing the app using `System.exit(0);`.
 
-![Root Detection](assets/images/root_detection_uncrackable_level1.png)
+![Root Detection](/assets/images/root_detection_uncrackable_level1.png)
 
 ```java
 private void a(String str) {
@@ -93,11 +93,11 @@ Once bypassed, the app presents a text field and a verify button. Clicking `veri
 
 By searching for this string in the code, we find the verification logic:
 
-![Verify Prompt](assets\images\try_again_prompt_uncrackable_level1.png)
+![Verify Prompt](/assets/images/try_again_prompt_uncrackable_level1.png)
 
 Let's take this as a reference to move ahead and find this string in the code. After searching this out, you can see a code like below which seems like a comparison between input value and some hard coded value.
 
-![Verify Code](assets\images\verify_uncrackable_level1.png)
+![Verify Code](/assets/images/verify_uncrackable_level1.png)
 
 ```java
 public void verify(View view) {
@@ -126,7 +126,7 @@ public void verify(View view) {
 
 We need to inspect the `a` method to understand the comparison.
 
-![Comparison Code](assets\images\compare_uncrackable_level1.png)
+![Comparison Code](/assets/images/compare_uncrackable_level1.png)
 
 ```java
 public class a {
@@ -155,7 +155,7 @@ public class a {
 
 The `bArr` value is what our input is being compared to. The `sg.vantagepoint.a.a.a` method is an AES decryption method.
 
-![AES Cipher](assets\images\aes_cipher_uncrackable_level1.png)
+![AES Cipher](/assets/images/aes_cipher_uncrackable_level1.png)
 
 ```java
 public class a {
@@ -214,7 +214,7 @@ Thank you for using Frida!
 (base) C:\Users\booyaa\uncrackable\level>
 ```
 
-![Final Result](assets\images\result_uncrackable_level1.gif)
+![Final Result](/assets/images/result_uncrackable_level1.gif)
 
 And there we have it, the decrypted string: `I want to believe`.
 
