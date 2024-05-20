@@ -168,9 +168,9 @@ public class a {
 }
 ```
 
-## Hooking the AES Cipher
+## Hooking the AES Cipher function 
 
-We can hook this function to get the decrypted value.
+We can hook this function to get the string value.
 
 ```js
 var a = Java.use('sg.vantagepoint.a.a');
@@ -182,11 +182,19 @@ a.a.implementation = function (p0, p1) {
     console.log("Result ->", bytesToString(result))
     return result;
 };
+
+function bytesToString(bytes) {
+    var result = '';
+    for (var i = 0; i < bytes.length; ++i) {
+        result += String.fromCharCode(bytes[i]);
+    }
+    return result;
+}
 ```
 
 ## Running the Script
 
-Execute the script to see the decrypted string.
+Execute the script to see the byte array as string.
 
 ```cmd
 (base) C:\Users\booyaa\uncrackable\level> frida -U -l ./hook_level1.js -f owasp.mstg.uncrackable1
@@ -216,6 +224,6 @@ Thank you for using Frida!
 
 ![Final Result](/assets/images/result_uncrackable_level1.gif)
 
-And there we have it, the decrypted string: `I want to believe`.
+And there we have it, the final string: `I want to believe`.
 
 Thanks for following along! Cheers 🍺
