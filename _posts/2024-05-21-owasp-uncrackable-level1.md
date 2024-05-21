@@ -9,6 +9,16 @@ tags: [owasp, ctf, mobile, pentesting, uncrackable]
 
 Let's dive into analyzing the `OWASP Uncrackable Level 1` app!
 
+
+This can be solved in two ways,
+1. Using frida (not required here!)
+2. Using normal code analysis and wite your own code from that.
+
+I'll show you both ways. So let's buckle up for both of the way to solve this challenge.
+
+>Using Frida
+{: .prompt-info }
+
 ## Root Detection
 
 Upon opening the app, it closes due to root detection, as shown below:
@@ -225,5 +235,41 @@ Thank you for using Frida!
 ![Final Result](/assets/images/result_uncrackable_level1.gif)
 
 And there we have it, the final string: `I want to believe`.
+
+>Using just python and no rooted device or frida
+{: .prompt-info }
+
+
+```python
+# level1.py
+
+import base64
+from Crypto.Cipher import AES
+from Crypto.Util.Padding import unpad
+
+def a(key, cipher_text):
+    cipher = AES.new(key, AES.MODE_ECB)
+    return unpad(cipher.decrypt(cipher_text), AES.block_size)
+
+def b(hex_string):
+    return bytes.fromhex(hex_string)
+
+try:
+    key = b("8d127684cbc37c17616d806cf50473cc")
+    cipher_text = base64.b64decode("5UJiFctbmgbDoLXmpL12mkno8HT4Lv8dlat8FxR2GOc=")
+    returned_bytes = a(key, cipher_text)
+    print("Solved: ", returned_bytes.decode())
+except Exception as e:
+    print("AES error: ", str(e))
+```
+
+```bash
+pip install pycryptodome
+```
+
+```bash
+$ python level1.py
+Solved:  I want to believe
+```
 
 Thanks for following along! Cheers 🍺
