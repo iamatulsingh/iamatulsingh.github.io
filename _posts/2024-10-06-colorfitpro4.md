@@ -1,8 +1,8 @@
 ---
-title: Colorfit pro 4
+title: How I Hacked Colorfit pro 4
 date: 2024-10-07 00:28:00 +200
-categories: [ble, bluetooth, smart-watch, reverse-engineering]
-tags: [ble, bluetooth, smart-watch, reverse-engineering]
+categories: [ble, bluetooth, smart-watch, reverse-engineering, colorfitpro4]
+tags: [ble, bluetooth, smart-watch, reverse-engineering, colorfitpro4]
 ---
 
 ## Colorfit pro 4 (Noisefit) | Reverse Engineering (not a tutorial)
