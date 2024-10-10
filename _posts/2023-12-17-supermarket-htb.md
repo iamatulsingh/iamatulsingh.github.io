@@ -5,9 +5,9 @@ categories: [hackthebox, ctf, supermarket]
 tags: [ctf, hackthebox, supermarket]
 ---
 
-Challenge: <a href="https://app.hackthebox.com/challenges/supermarket">Supermaket (HTB | Hack the box): 40 points</a>
+Challenge: <a href="https://app.hackthebox.com/challenges/supermarket">Supermarket (HTB | Hack the box): 40 points</a>
 
-It took me just 3-4 minutes for completeing this challange (inlcuding decompile, patch the code and recompile).
+It took me just 3-4 minutes for completing this challenge (including decompile, patch the code and recompile).
 
 There are multiple ways to solve this challenge, like:
 
@@ -15,7 +15,7 @@ There are multiple ways to solve this challenge, like:
 - [ ] Hook the function and read the value from it which will require a rooted android phone/emulator.
 - [x] Use self written custom tool and save some precious time `(Which I did by the way)`.
 
-If you check the code after decompilation, you can see that it's reading strings from a `jni` library name `supermarket` which is present in `lib` folder.
+If you check the code after de-compilation, you can see that it's reading strings from a `jni` library name `supermarket` which is present in `lib` folder.
 
 ```java
 static {
@@ -23,7 +23,7 @@ static {
     }
 ```
 
-I already have my self written tool specially for reverse engineering so I didn't even bother to check that `supermarket.so` and spending time to write a script to get the string and decrypt it. I simply used my tool to inject in the app and got the decrypted string. Please check the original and patched code I mentioned below. I'm not pasting my code to receive that string on Telegram. Below is the java similar code snippet from the decompiled apk.
+I already have my self written tool specially for reverse engineering, so I didn't even bother to check that `supermarket.so` and spending time to write a script to get the string and decrypt it. I simply used my tool to inject in the app and got the decrypted string. Please check the original and patched code I mentioned below. I'm not pasting my code to receive that string on Telegram. Below is the java similar code snippet from the decompiled apk.
 
 I needed to focus on reading the value of `new String(cipher.doFinal(Base64.decode(stringFromJNI, 0)), "utf-8")` because I have a smali code using which I can read this decrypted string and send it to my `Telegram` chat. I Just needed to import that and send that to imported function as function parameter. 
 
@@ -140,7 +140,7 @@ Last but not least, don't forget to add internet permisison to the manifest.
 Finally, I just had to click/touch the coupon code box and I got the result as message in my Telegram chat.
 
 
-| ![space-1.jpg](/assets/screenshots/sidebar.png){: width="350" } | ![space-1.jpg](/assets/screenshots/result.jpg){: width="320" } | 
+| ![space-1.jpg](/assets/images/supermarket/sidebar.png){: width="350" } | ![space-1.jpg](/assets/images/supermarket/result.jpg){: width="320" } | 
 |:--:|:--:| 
 | *Folder with injected smali file* | *Result* |
 

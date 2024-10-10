@@ -6,29 +6,29 @@ tags: [bluetooth, ble, smart-watch]
 ---
 
 
-![Banner](/assets/images/carme_banner.jpg)
+![Banner](/assets/images/carme/carme_banner.jpg)
 
-In this tutorial I am going to tell you how I hacked Lenovo Carme smart watch using Python3 in less than 100 lines of code and with basic knowledge of BLE (Bluetooth Low Energy). This code has been tested on Ubuntu 18.04. It will not work on Windows. You can find the source code for the same in my Github repository <a href="https://github.com/iamatulsingh/Carme-HW25P?ref=hackernoon.com">here</a>.
+In this tutorial I am going to tell you how I hacked Lenovo Carme smartwatch using Python3 in less than 100 lines of code and with basic knowledge of BLE (Bluetooth Low Energy). This code has been tested on Ubuntu 18.04. It will not work on Windows. You can find the source code for the same in my Github repository <a href="https://github.com/iamatulsingh/Carme-HW25P?ref=hackernoon.com">here</a>.
 
 
-![Watch](/assets/images/carme_watch.jpg)
+![Watch](/assets/images/carme/carme_watch.jpg)
 
 ### Prerequisites
-Concepts of Object Oriented Programming and some knowledge of how BLE works.
+Concepts of Object-Oriented Programming and some knowledge of how BLE works.
 
 ### What tools I’ve used?
 
-I used Gatttool for identifying the correct characteristic to communicate with the device.
+I used `Gatttool` for identifying the correct characteristic to communicate with the device.
 
 ### How I hacked?
 Before I started to work on this project I had to read about BLE communication, Damn it went bouncer to understand the concept when I read it first but then after reading couple of times I thought I know it very well. But did I? Lets find it out.
-I fired up Gatttool to search all UUIDs of this device and got the list which I'm showing in below image.
+I fired up `Gatttool` to search all UUIDs of this device and got the list which I'm showing in below image.
 
-![Characteristics](/assets/images/characteristics.png)
+![Characteristics](/assets/images/carme/characteristics.png)
 
 Now the questions was what I want to do and what I need for that. I started with the basic things first and that is battery level. I used nrf connect to find the handle of battery level which is 0x0030 and in response I got “X” and i was like …
 
-![Characteristics](/assets/images/minion_what.gif)
+![Characteristics](/assets/images/carme/minion_what.gif)
 
 I searched little bit and found response of BLE devices. So it was a 1 byte string which is ASCII equivalent of 0x58. So when we unpack the byte value we will get 88 and finally which is battery level data. So lets check the code that I wrote in python below.
 
@@ -108,6 +108,6 @@ class HW25P(Peripheral):
 
 And finally you can check the working code screenshot below.
 
-![HeartRate](/assets/images/heart_rate.png)
+![HeartRate](/assets/images/carme/heart_rate.png)
 
 Hope you like this tutorial. Do share your thoughts and feedback with me. If you find any issue then do let me know to overcome that.

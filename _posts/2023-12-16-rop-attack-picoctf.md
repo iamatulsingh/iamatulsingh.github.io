@@ -7,45 +7,45 @@ tags: [ctf, picoctf, ropfu]
 
 # How to Use ROP Vulnerability in PicoCTF Ropfu Challenge
 
-![Ropfu](/assets/images/picoctf_ropfu.jpeg)
+![Ropfu](/assets/images/rop_attack/picoctf_ropfu.jpeg)
 
 Here is our challenge where we have to use ROP vulnerability as mentioned in the description. We can start the instance and download the source code as well as the executable to start our inspection and find out what we are dealing with.
 
 >Before we begin, I would like to mention that if you don’t have any idea about ROP, ROP chain or how stack works then please get some knowledge before read this write up because I’m not explaining that here.
 {: .prompt-warning }
 
-![C code](/assets/images/original_c_code.png)
+![C code](/assets/images/rop_attack/original_c_code.png)
 
 This is the code we got in the challenge, and it’s very small and simple.
 We can see that it’s using the `gets` function which is vulnerable to perform buffer overflow attack, but wait! Where is the function to get the flag?. We can’t just use buffer overflow because we don’t have any function to get the flag from it and hence no function address to add in the stack. Here is the challenge description telling you that we will have to perform ROP chain in order to get the access to the shell actually, and then we will be going to find where the flag is. This is where many people can get idea that what is the difference between buffer overflow and ROP attacks. Just buckle up to check a little more about the binary so that we can find what is running on that server for this challenge.
 
-![file type](/assets/images/file_type.png)
+![file type](/assets/images/rop_attack/file_type.png)
 
-![binary details](/assets/images/binary_details.png)
+![binary details](/assets/images/rop_attack/binary_details.png)
 
 This is a 32-bit Linux executable file (ELF 32-bit) but, Eh! Stack canary found. Hmm! Now what? Nothing to fear. It will be a little different, but we will get through it.
 
-![Joke](/assets/images/joke1.png)
+![Joke](/assets/images/rop_attack/joke1.png)
 
 Okay, let’s fire up the `gdb` and check out this binary closely. As we saw earlier that the buffer size is set to 16 bytes, we will be going to create a payload to perform buffer overflow first. For that, first we will going to create  a pattern for it using `pattern create` in `gdb` of more than 16 bytes but keep in mind that we are dealing with the executable which have canary enabled. So now we will try to create a pattern with 50 bytes, and then we will find out the offset. I used the following below pattern to start with
 
-![Pattern](/assets/images/pattern.png)
+![Pattern](/assets/images/rop_attack/pattern.png)
 
 and now let’s check the offset.
 
-![Offset](/assets/images/offset.png)
+![Offset](/assets/images/rop_attack/offset.png)
 
 So now we find out the offset, which is 25 for our register $eip. Now we can use simple add some character to find the address in the register so that we can start creating our payload for the ROP chain. Because we are dealing with the Stack canary, I tried different payload size and found 28 bytes from where we can start buffer overflow. I used 50 bytes ‘A’s to check what is the address of ‘A’ to go to the stack to perform buffer overflow.
 
-![eaf](/assets/images/eaf.png)
+![eaf](/assets/images/rop_attack/eaf.png)
 
 As we can see that we have 0x414141 at $eax which is our point of interest to start buffer overflow, and then we will be going to put return address of our shell payload in the stack before existing the code. Let’s check the stack so that we can find the address for $eax. For that, let’s use a great library name, ROPGadget.
 
-![trace](/assets/images/trace.png)
+![trace](/assets/images/rop_attack/trace.png)
 
 The list a very big so we can use any editor or grep to find the jump code which we can use to go to $eax.
 
-![eax](/assets/images/eax.png)
+![eax](/assets/images/rop_attack/eax.png)
 
 And there you go, we got the address to our $eax which we can use to create our payload.
 

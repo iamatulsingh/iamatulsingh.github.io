@@ -192,7 +192,7 @@ Interceptor.attach(Module.findExportByName("libc.so", "strstr"), {
 });
 ```
 
-![First Check](/assets/images/owasp_level3_first_try.png)
+![First Check](/assets/images/uncrackable_level3/owasp_level3_first_try.png)
 
 With the basic bypass script ready, we can proceed to the main mission.
 
@@ -208,7 +208,7 @@ Since the `init` function is defined in the native library, we need to load the 
 
 ## Understanding the Native Code
 
-![String Comparison](/assets/images/owasp_level3_string_comparison.png)
+![String Comparison](/assets/images/uncrackable_level3/owasp_level3_string_comparison.png)
 
 The `strncpy` function is used as follows:
 >char * strncpy ( char * destination, const char * source, size_t num );
@@ -218,13 +218,13 @@ if you know about the `strncpy` it's clear that the source char pointer is `DAT_
 When I check where else does `DAT_00115038` is getting used and I found that it's another function from nativ lib which is
 `CodeCheck_bar`. Don't forget to check if size of the comparison, which is `0x18` i.e. 24 in decimal (do you still remember what we had earlier?).
 
-![Secret Function In Bar](/assets/images/owasp_level3_secret_function_in_bar.png)
+![Secret Function In Bar](/assets/images/uncrackable_level3/owasp_level3_secret_function_in_bar.png)
 
 The source char pointer is `DAT_00115038`, which is our point of interest. This pointer is also used in another function from the native library, `CodeCheck_bar`. Note that the size of the comparison is `0x18`, which is `24` in decimal (matching our XOR key length).
 
 The local variable `local_68` is used in an if condition and is first populated inside the function `FUN_001010e0`. This function contains 1000 lines of code, making it impractical to check manually. However, the function parameter shows that the variable passed is a pointer, meaning something has returned from this function will be stored at that memory address. Since this function is not exported, we need its address to hook it. `Ghidra` shows the function’s address as `(0x10e0)`.
 
-![Secret Function Location](/assets/images/owasp_level3_secret_function_location.png)
+![Secret Function Location](/assets/images/uncrackable_level3/owasp_level3_secret_function_location.png)
 
 ## Key Points to Remember
 
@@ -302,6 +302,6 @@ secret:  298171915237321130325902919218149002381920
 result -> making owasp great again
 ```
 
-![Result](/assets/images/owasp_level3_output.gif)
+![Result](/assets/images/uncrackable_level3/owasp_level3_output.gif)
 
 Thanks for following along! Cheers 🍺

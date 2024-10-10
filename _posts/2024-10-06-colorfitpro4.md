@@ -7,7 +7,7 @@ tags: [ble, bluetooth, smart-watch, reverse-engineering, colorfitpro4]
 
 ## Colorfit pro 4 (Noisefit) | Reverse Engineering (not a tutorial)
 
-![Banner](/assets/images/noisefit4pro/noisefitpro4.jpg)
+![Banner](/assets/images/colorfitpro4/noisefitpro4.jpg)
 
 > Disclaimer:
 The content provided on this blog regarding the reverse engineering of a smartwatche is intended solely for educational and informational purposes. It is not meant to encourage or promote any illegal, malicious, or unethical activities. The techniques and analyses shared are for understanding how these devices operate and should be used responsibly.
@@ -58,18 +58,18 @@ async def noisefit_4_pro() -> None:
 >Heart Rate Calculating on the Watch
 {: .prompt-tip }
 
-![Heart Rate](/assets/images/noisefit4pro/noisefitpro4_heart_rate.gif)
+![Heart Rate](/assets/images/colorfitpro4/noisefitpro4_heart_rate.gif)
 
 ## Code in Action
 
 >Code in Action
 {: .prompt-tip }
 
-![In Action](/assets/images/noisefit4pro/noisefit4pro_output.gif)
+![In Action](/assets/images/colorfitpro4/noisefit4pro_output.gif)
 
 ## Final Output
 
 >Final Result
 {: .prompt-tip }
 
-![Final Image](/assets/images/noisefit4pro/noisefitpro4_final.jpg)
+![Final Image](/assets/images/colorfitpro4/noisefitpro4_final.jpg)

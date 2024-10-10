@@ -45,7 +45,7 @@ To understand why, we can decompile the APK using jadx. In the `AndroidManifest.
 
 In `MainActivity`, we find the code responsible for detecting root and closing the app using `System.exit(0);`.
 
-![Root Detection](/assets/images/root_detection_uncrackable_level1.png)
+![Root Detection](/assets/images/uncrackable_level1/root_detection_uncrackable_level1.png)
 
 ```java
 public void a(String str) {
@@ -116,11 +116,11 @@ Once bypassed, the app presents a text field and a verify button. Clicking `veri
 
 By searching for this string in the code, we find the verification logic (Same in both Uncrackable 1 and 2):
 
-![Verify Prompt](/assets/images/try_again_prompt_uncrackable_level1.png)
+![Verify Prompt](/assets/images/uncrackable_level1/try_again_prompt_uncrackable_level1.png)
 
 Let's take this as a reference to move ahead and find this string in the code. After searching this out, you can see a code like below which seems like a comparison between input value and some hard coded value.
 
-![Verify Code](/assets/images/verify_uncrackable_level1.png)
+![Verify Code](/assets/images/uncrackable_level1/verify_uncrackable_level1.png)
 
 ```java
 public void verify(View view) {
@@ -149,8 +149,8 @@ public void verify(View view) {
 
 We need to inspect the `a` method to understand the comparison.
 
-![Nativ Lib](/assets/images/native_lib_uncrackable_level2.png)
-![Comparison Code](/assets/images/compare_uncrackable_level2.png)
+![Nativ Lib](/assets/images/uncrackable_level2/native_lib_uncrackable_level2.png)
+![Comparison Code](/assets/images/uncrackable_level2/compare_uncrackable_level2.png)
 
 ```java
 public class CodeCheck {
@@ -164,7 +164,7 @@ public class CodeCheck {
 
 Function `bar(str.getBytes())` is returning `true or false` and this seems to be a native fucntion as mentioned `private native boolean bar(byte[] bArr);` and to analyze `bar` function, let's open `Ghidra`.
 
-![Ghidra Analysis](/assets/images/code_in_ghidra_uncrackable_level2.png)
+![Ghidra Analysis](/assets/images/uncrackable_level2/code_in_ghidra_uncrackable_level2.png)
 
 ```c
 void Java_sg_vantagepoint_uncrackable2_CodeCheck_bar
@@ -212,7 +212,7 @@ b'f sknahT'
 >>>
 ```
 
-![String Check](/assets/images/half_result_ghidra_uncrackable_level2.png)
+![String Check](/assets/images/uncrackable_level2/half_result_ghidra_uncrackable_level2.png)
 
 you'll get `b'f sknahT'` which seems like a string in reverse order i.e. `Thanks f`. That means, this is in little endian format and we can try all those hex to check what it generates. Last but not least, it also checking if the size of the string is 23 characters long using `0x17`.  
 
@@ -275,7 +275,7 @@ Process terminated
 Thank you for using Frida!
 ```
 
-![Final Result Frida](/assets/images/result_frida_uncrackable_level2.png)
+![Final Result Frida](/assets/images/uncrackable_level2/result_frida_uncrackable_level2.png)
 
 >Using Python script
 {: .prompt-info }
@@ -300,6 +300,6 @@ $ python level2.py
 Solved: Thanks for all the fish
 ```
 
-![Final Result Frida](/assets/images/result_uncrackable_level2.png)
+![Final Result Frida](/assets/images/uncrackable_level2/result_uncrackable_level2.png)
 
 Thanks for following along! Cheers 🍺
