@@ -9,6 +9,12 @@ tags: [ble, bluetooth, smart-watch, reverse-engineering, colorfitpro4]
 
 ![Banner](/assets/images/noisefit4pro/noisefitpro4.jpg)
 
+> Disclaimer:
+The content provided on this blog regarding the reverse engineering of a smartwatche is intended solely for educational and informational purposes. It is not meant to encourage or promote any illegal, malicious, or unethical activities. The techniques and analyses shared are for understanding how these devices operate and should be used responsibly.
+I have not shared any code or detailed instructions that could be used to exploit these devices for harmful purposes. Readers are advised to adhere to all relevant laws and regulations in their respective jurisdictions. Any misuse of the information provided is solely the responsibility of the individual involved.
+By accessing and using the content on this blog, you agree to use the information responsibly and ethically.
+{: .prompt-warning }
+
 ## Why I did that?
 
 >I really hate sharing my personal data with any company. That’s why I thought, why not use my old smartwatch to check my health data without connecting to the app (which will save my data on a server)? This way, I can also do some automation using it.
