@@ -15,7 +15,7 @@ I have not shared any code or detailed instructions that could be used to exploi
 By accessing and using the content on this blog, you agree to use the information responsibly and ethically.
 {: .prompt-warning }
 
-## Why I did that?
+## Why did I do that?
 
 >I really hate sharing my personal data with any company. That’s why I thought, why not use my old smartwatch to check my health data without connecting to the app (which will save my data on a server)? This way, I can also do some automation using it.
 {: .prompt-info }
