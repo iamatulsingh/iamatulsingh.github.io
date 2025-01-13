@@ -1,8 +1,8 @@
 ---
 title: Image Inquisition - eksclustergames | 10 points
 date: 2023-12-29 12:00:00 +100
-categories: [eksclustergames, ctf, image-inquisition]
-tags: [ctf, eksclustergames, image-inquisition]
+categories: [eksclustergames, ctf, image-inquisition, devops, devsecops]
+tags: [ctf, eksclustergames, image-inquisition, devops, devsecops]
 ---
 
 # Challenge Description

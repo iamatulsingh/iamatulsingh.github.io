@@ -1,8 +1,8 @@
 ---
 title: Supermarket - Hack The Box (htb) | 40 points
 date: 2023-12-17 12:00:00 +100
-categories: [hackthebox, ctf, supermarket]
-tags: [ctf, hackthebox, supermarket]
+categories: [hackthebox, ctf, supermarket, android]
+tags: [ctf, hackthebox, supermarket, android]
 ---
 
 Challenge: <a href="https://app.hackthebox.com/challenges/supermarket">Supermarket (HTB | Hack the box): 40 points</a>

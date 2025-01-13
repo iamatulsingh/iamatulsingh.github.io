@@ -1,8 +1,8 @@
 ---
 title: Uncrackable - Level 1 | OWASP
 date: 2024-05-21 00:00:00 +200
-categories: [owasp, ctf, mobile, pentesting, uncrackable]
-tags: [owasp, ctf, mobile, pentesting, uncrackable]
+categories: [owasp, ctf, mobile, pentesting, uncrackable, android]
+tags: [owasp, ctf, mobile, pentesting, uncrackable, android]
 ---
 
 # OWASP Uncrackable | Level 1
